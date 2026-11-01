@@ -1,0 +1,49 @@
+[workspace]
+authors = ["Marius S <39998+winding-lines@users.noreply.github.com>"]
+channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
+name = "xml.mojo"
+version = "0.1.0"
+description = "A small pure-Mojo XML pull parser and path-addressed read-only tree."
+preview = ["pixi-build"]
+platforms = ["osx-arm64", "linux-64"]
+
+[dependencies]
+
+[tasks]
+test = { cmd = "mkdir -p build && mojo run -I src -I tests tests/xml_test.mojo" }
+check = { depends-on = ["test"] }
+fmt = { cmd = "mojo format src tests" }
+format-check = { cmd = "mojo format src tests && git diff --exit-code -- src tests" }
+
+# ── pixi-build: consumable as a pixi source dependency ──────────────────────
+# Conda package name is xml-mojo; the Mojo import stays `from xml import …`.
+[package]
+name = "xml-mojo"
+version = "0.1.0"
+
+[package.build]
+backend = { name = "pixi-build-mojo", version = "0.*" }
+
+[package.build.config.pkg]
+path = "src/xml"
+name = "xml"
+
+[package.host-dependencies]
+mojo-compiler = "==1.2.0"
+
+[package.build-dependencies]
+mojo-compiler = "==1.2.0"
+
+[package.run-dependencies]
+mojo-compiler = ">=1.2.0,<2"
+
+# ── stable / nightly toolchain matrix (see CI) ──────────────────────────────
+[feature.nightly.dependencies]
+modular = ">=26.8.0.dev2026102305,<28"
+
+[feature.stable.dependencies]
+mojo-compiler = "==1.2.0"
+
+[environments]
+default = ["nightly"]
+stable = ["stable"]

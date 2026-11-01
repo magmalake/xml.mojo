@@ -1,0 +1,5 @@
+name = "xml-mojo"
+version = "0.1.0"
+description = "A small pure-Mojo XML pull parser (events, entity decoding, CDATA) and a flat path-addressed read-only tree for API responses"
+tags = ["xml", "parser", "pull-parser", "aws", "magmalake"]
+tins = []
