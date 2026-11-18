@@ -1,7 +1,7 @@
 """Test suite for xml.mojo — pull events, entities, error cases, and the
 path queries over an EC2 `DescribeInstances` response."""
 
-from std.testing import TestSuite, assert_equal, assert_raises, assert_true
+from std.testing import TestSuite, assert_equal, assert_raises
 
 from xml import (
     Document,
