@@ -1,4 +1,4 @@
-"""xml — a small pure-Mojo XML parser.
+"""`xml` — a small pure-Mojo XML parser.
 
 `xml.reader.XmlReader` is a pull parser (start / end / text events, entity
 decoding, CDATA, comments and DOCTYPE skipped). `xml.document.Document`

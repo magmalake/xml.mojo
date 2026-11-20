@@ -7,7 +7,13 @@ description = "A small pure-Mojo XML pull parser and path-addressed read-only tr
 preview = ["pixi-build"]
 platforms = ["osx-arm64", "linux-64"]
 
+# One toolchain: the tin, its tests and every consumer use the same Mojo
+# nightly. A precompiled Mojo package (.mojoc) loads only in the compiler
+# version that built it, so the pin is exact here and in [package] below, and
+# it moves across all magmalake tins together. `mojo` (not just
+# mojo-compiler) because the fmt tasks need `mojo format`.
 [dependencies]
+mojo = "==1.3.0.dev2026111805"
 
 [tasks]
 test = { cmd = "mkdir -p build && mojo run -I src -I tests tests/xml_test.mojo" }
@@ -29,21 +35,10 @@ path = "src/xml"
 name = "xml"
 
 [package.host-dependencies]
-mojo-compiler = "==1.2.0"
+mojo-compiler = "==1.3.0.dev2026111805"
 
 [package.build-dependencies]
-mojo-compiler = "==1.2.0"
+mojo-compiler = "==1.3.0.dev2026111805"
 
 [package.run-dependencies]
-mojo-compiler = ">=1.2.0,<2"
-
-# ── stable / nightly toolchain matrix (see CI) ──────────────────────────────
-[feature.nightly.dependencies]
-modular = ">=26.8.0.dev2026102305,<28"
-
-[feature.stable.dependencies]
-mojo-compiler = "==1.2.0"
-
-[environments]
-default = ["nightly"]
-stable = ["stable"]
+mojo-compiler = "==1.3.0.dev2026111805"

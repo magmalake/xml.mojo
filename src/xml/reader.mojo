@@ -46,7 +46,7 @@ struct XmlEvent(Copyable, Movable):
 
 
 def _slice(b: Span[UInt8, _], start: Int, end: Int) -> String:
-    return String(StringSlice(unsafe_from_utf8=b[start:end]))
+    return String(StringSpan(unsafe_from_utf8=b[start:end]))
 
 
 def _is_space(c: UInt8) -> Bool:
@@ -168,7 +168,7 @@ def decode_entities(raw: Span[UInt8, _]) raises -> String:
         else:
             raise Error("xml: unknown entity &" + ent + ";")
         k = semi + 1
-    return String(StringSlice(unsafe_from_utf8=Span(out)))
+    return String(StringSpan(unsafe_from_utf8=Span(out)))
 
 
 struct XmlReader(Movable):
@@ -202,7 +202,7 @@ struct XmlReader(Movable):
     def _fail(self, msg: String) raises:
         raise Error("xml: " + msg + " at byte " + String(self._pos))
 
-    def _starts_with(self, lit: StringSlice) -> Bool:
+    def _starts_with(self, lit: StringSpan) -> Bool:
         var l = lit.as_bytes()
         if self._pos + len(l) > len(self._buf):
             return False
@@ -211,7 +211,7 @@ struct XmlReader(Movable):
                 return False
         return True
 
-    def _skip_until(mut self, lit: StringSlice) raises:
+    def _skip_until(mut self, lit: StringSpan) raises:
         """Advances past the next occurrence of `lit`."""
         var l = lit.as_bytes()
         var n = len(self._buf)
