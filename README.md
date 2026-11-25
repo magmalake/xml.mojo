@@ -1,6 +1,6 @@
 # xml.mojo
 
-[![CI](https://github.com/magmalake/xml.mojo/actions/workflows/ci.yml/badge.svg)](https://github.com/magmalake/xml.mojo/actions/workflows/ci.yml)
+[![CI](https://github.com/magmalake/xml.mojo/actions/workflows/ci.yml/badge.svg)](https://github.com/magmalake/xml.mojo/actions/workflows/ci.yml) [![Used by](https://mojourney.dev/badge/magmalake/xml.mojo/used-by.svg)](https://mojourney.dev/repos/magmalake/xml.mojo#used-by) [![Mojo version](https://mojourney.dev/badge/magmalake/xml.mojo/mojo.svg)](https://mojourney.dev/repos/magmalake/xml.mojo)
 
 Part of [**magmalake**](https://magmalake.org) — data lake building blocks in Mojo.
 
