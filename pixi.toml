@@ -2,7 +2,7 @@
 authors = ["Marius S <39998+winding-lines@users.noreply.github.com>"]
 channels = ["https://conda.modular.com/max-nightly", "conda-forge"]
 name = "xml.mojo"
-version = "0.1.0"
+version = "0.1.1"
 description = "A small pure-Mojo XML pull parser and path-addressed read-only tree."
 preview = ["pixi-build"]
 platforms = ["osx-arm64", "linux-64"]
@@ -25,7 +25,7 @@ format-check = { cmd = "mojo format src tests && git diff --exit-code -- src tes
 # Conda package name is xml-mojo; the Mojo import stays `from xml import …`.
 [package]
 name = "xml-mojo"
-version = "0.1.0"
+version = "0.1.1"
 
 [package.build]
 backend = { name = "pixi-build-mojo", version = "0.*" }
