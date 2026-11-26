@@ -43,7 +43,7 @@ content with the whitespace-only runs between child elements dropped.
 ## Develop
 
 ```bash
-pixi run test               # Mojo 1.3.0.dev2026112505
+pixi run test               # Mojo 1.3.0.dev2026112605
 ```
 
 Consume it by source path: check it out next to your project and add
